@@ -1,0 +1,15 @@
+$TTL    86400 ; Clients will cache DNS responses for 1 day
+
+@ IN SOA ns1.test. admin.test. (
+        1 ; Serial
+   604800 ; Refresh (1 week)
+    86400 ; Retry   (1 day)
+  2419200 ; Expire  (4 weeks)
+   604800 ; Negative Cache TTL (4 weeks)
+)         ; The values above are only relevant for secondary DNS servers
+
+; name servers
+      IN      NS      ns1.test.
+
+; PTR Records
+253   IN      PTR     ns1.test.

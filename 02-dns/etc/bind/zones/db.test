@@ -1,0 +1,26 @@
+$TTL    86400 ; Clients will cache DNS responses for 1 day
+
+; Authoritative zone "test."
+; The values in () are only relevant for a secondary DNS which we don't have
+$ORIGIN test.
+@ IN SOA ns1.test. admin.test. (
+        1 ; Serial
+   604800 ; Refresh (1 week)
+    86400 ; Retry   (1 day)
+  2419200 ; Expire  (4 weeks)
+   604800 ; Negative Cache TTL (4 weeks)
+)
+
+; Name servers for zone "test."
+@        IN    NS      ns1
+
+; A records for zone "test."
+ns1      IN    A       192.168.56.253
+
+; Subzone delegation "ipa.test."
+; (non-authoritative NS records and "glue" A records)
+$ORIGIN ipa.test.
+@         IN   NS      server
+@         IN   NS      replica01
+server    IN   A       192.168.56.200
+replica01 IN   A       192.168.56.201

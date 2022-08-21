@@ -1,0 +1,33 @@
+Host *
+    HostName localhost
+    IdentityFile ./freeipa_rsa
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
+
+Host debian-base
+    Port 30022
+    User debian
+
+Host dhcp
+    Port 40250
+    User debian
+
+Host dns
+    Port 40253
+    User debian
+
+Host fedora-base
+    Port 30023
+    User fedora
+
+Host server
+    Port 40200
+    User fedora
+
+Host node01
+    Port 40001
+    User debian
+
+Host replica01
+    Port 40201
+    User fedora

@@ -1,0 +1,33 @@
+# Who can query this DNS server? Who can do recursive queries?
+acl internals { 127.0.0.0/8; 192.168.56.0/24; };
+
+options {
+    querylog yes;
+    directory "/var/cache/bind";
+    allow-query { internals; };
+    allow-recursion { internals; };
+    dnssec-validation auto;
+    listen-on { 192.168.56.253; };
+    listen-on-v6 { none; };
+};
+
+# Remember to create /var/log/named root:bind 775
+logging {
+    channel default_file {
+        file "/var/log/named/default.log" versions 3 size 5m;
+        severity dynamic;
+        print-time yes;
+        print-category yes;
+        print-severity yes;
+    };
+    channel queries_file {
+        file "/var/log/named/queries.log" versions 3 size 5m;
+        severity info;
+        print-time yes;
+        print-category yes;
+        print-severity yes;
+    };
+    category default { default_file; };
+    category queries { queries_file; };
+    category query-errors { queries_file; };
+};

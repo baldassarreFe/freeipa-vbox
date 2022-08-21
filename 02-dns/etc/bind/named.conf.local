@@ -1,0 +1,11 @@
+# Forward zone for test
+zone "test" {
+    type master;
+    file "/etc/bind/zones/db.test";
+};
+
+# Reverse zone for 192.168.56.0/24, disabled because not used
+# zone "56.168.192.in-addr.arpa" {
+#     type master;
+#     file "/etc/bind/zones/db.56.168.192.in-addr.arpa";
+# };
