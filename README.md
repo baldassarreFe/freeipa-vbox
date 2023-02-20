@@ -1,5 +1,19 @@
 # FreeIPA in VirtualBox
 
+This guide demonstrates how to set up FreeIPA for a compute cluster using VMs in VirtualBox.
+The IPA servers run Fedora 36 and FreeIPA 4.9.
+The compute nodes, the DNS and the DHCP servers run Debian 11.
+
+Overview:
+- Set up VirtualBox headless
+- Create a base Debian VM
+- Create the DHCP server
+- Create the DNS server
+- Create a base Fedora VM
+- Create the FreeIPA server with internal CA and DNS
+- Create a compute node with a FreeIPA client
+- Create a FreeIPA replica for the internal CA and DNS
+
 ## VirtualBox setup
 
 ### Installation
